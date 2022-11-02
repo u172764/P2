@@ -26,6 +26,6 @@ The standards are:
 
 #ONLY AUDIO
 for format in formats:
-    if format in  
+    if format in
 
 
