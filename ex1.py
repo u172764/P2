@@ -1,17 +1,16 @@
 import os
 
-# guardo la info en un archivo de texto
-command = 'ffprobe -i BigBuckBunny_512kb.mp4 2> file.txt'
-os.system(command)
+
+def parse_file():
+    command = 'ffprobe -i output_package.mp4 2> file.txt'
+    os.system(command)
+    lines2mark = ['Stream', 'Input', 'Duration:']
+    with open('file.txt', 'r') as file:
+        for line in file:
+            #print(line)
+            for word in line.split():
+                if word == lines2mark[0] or word == lines2mark[1] or word == lines2mark[2]:
+                    print(line)
 
 
-lines2mark = 'Stream'
-
-# list_lineas[]-> se guarda o se imprime
-
-with open('file.txt', 'r') as file:
-    for line in file:
-        for word in line.split():
-            if word == lines2mark:
-                print(line)
-
+parse_file()
