@@ -21,11 +21,42 @@ The standards are:
     ISDB: Video = MPEG2, h.264                          Audio = AAC (aac)
     ISDB-Tb Brazilian and Latam : Video = h.246         Audio = AAC (aac_latm)
     ATSC: Video = MPEG2, h.264                          Audio = AC-3 (ac3)
-    DTMB: Video = AVS (avs), AVS+ (avs2) , MPEG2, h.264 Audio = DRA (dra) , AAC (aac), AC-3 (ac3) , MP2 (mp2) , MP3 (mp3)
+    DTMB: Video = AVS (avs), AVS+ (avs2) , MPEG2, h.264 Audio = DRA (dra) , AAC (aac), AC-3 (ac3) , ###MP2 (mp2) , MP3 (mp3)
 """
-
 #ONLY AUDIO
+aac = 0
+ac3 = 0
+aac_latm = 0
+mp3 = 0
+mp2 = 0
+dra = 0
 for format in formats:
-    if format in
+    if format == 'aac':
+        aac = aac + 1
+    if format == 'ac3':
+        ac3 = ac3 + 1
+    if format == 'aac_latm':
+        aac_latm = aac_latm + 1
+    if format == 'mp3':
+        mp3 = mp3 + 1
+    if format == 'mp2':
+        mp2 = mp2 + 1
+    if format == 'dra':
+        dra = dra + 1
+
+if aac == len(formats):
+    print('ISDB or DVB or DTMB')
+if ac3 == len(formats):
+    print('DVB or ATSC or DTMB')
+if aac_latm == len(formats):
+    print('ISDB_Tb')
+if mp3 == len(formats):
+    print('DVB or DTMB')
+if mp2 > 0 or dra > 0:
+    print('DTMB')
+else:
+    print('DTMB or DVB')
+
+
 
 
