@@ -77,13 +77,13 @@ def broadcast_standard_type(formats):
 
     if aac == len(formats):
         print('ISDB or DVB or DTMB')
-    if ac3 == len(formats):
+    elif ac3 == len(formats):
         print('DVB or ATSC or DTMB')
-    if aac_latm == len(formats):
+    elif aac_latm == len(formats):
         print('ISDB_Tb')
-    if mp3 == len(formats):
+    elif mp3 == len(formats):
         print('DVB or DTMB')
-    if mp2 > 0 or dra > 0:
+    elif mp2 > 0 or dra > 0:
         print('DTMB')
     else:
         print('DTMB or DVB')
