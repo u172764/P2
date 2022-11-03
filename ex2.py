@@ -1,7 +1,7 @@
 import os
-import ex1
 
-def ex2():
+
+def create_new_container(new_name):
     # Cut BBB into 1 minute
     command1 = 'ffmpeg -i BigBuckBunny_512kb.mp4 -ss 00:00:00 -to 00:01:00 -c:v copy -c:a copy video_cortado.mp4'
     os.system(command1)
@@ -19,10 +19,9 @@ def ex2():
     os.system(command3)
 
     command4 = 'ffmpeg -i video_cortado.mp4 -i audio1_stereo.mp3 -i audio2.aac -map 0 -map 1 -map 2 -c copy ' \
-               '-shortest output_package.mp4 '
+               '-shortest {} '.format(new_name)
     os.system(command4)
 
 
-ex2()
-ex1.parse_file()
-
+name_new_container = 'new_container.mp4'
+create_new_container(name_new_container)
